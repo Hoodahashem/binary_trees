@@ -1,4 +1,5 @@
 #include "binary_trees.h"
+
 /**
  * binary_tree_insert_left - function that creates a node and insert it
  * in the left sid e of the root
