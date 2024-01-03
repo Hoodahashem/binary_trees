@@ -2,7 +2,6 @@
 
 /**
  * binary_tree_insert_left - function that creates a node and insert it
- * in the left sid e of the root
  * @parent: the root
  * @value: the value that i'll put it in the new node
  * Return: return a pointer to the created node
