@@ -4,9 +4,9 @@
  * @tree:the root
  * Return: an int
 */
-int heightagain(const binary_tree_t *tree)
+size_t heightagain(const binary_tree_t *tree)
 {
-	int left, right;
+	size_t left, right;
 
 	if (tree == NULL)
 	{
@@ -30,15 +30,13 @@ int heightagain(const binary_tree_t *tree)
 */
 int binary_tree_balance(const binary_tree_t *tree)
 {
-	if (tree == NULL)
-	{
-		return (0);
-	}
-	else
-	{
-		int right = heightagain(tree->right);
-		int left = heightagain(tree->left);
+	int right = 0, left = 0, result = 0;
 
-		return (left - right);
+	if (tree)
+	{
+		right = heightagain((int)tree->right);
+		left = heightagain((int)tree->left);
 	}
+	result = left - right;
+	return (result);
 }
