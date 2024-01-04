@@ -1,42 +1,46 @@
 #include "binary_trees.h"
+
 /**
- * heightagain - function that calc the height
- * @tree:the root
- * Return: an int
-*/
+ * heightagain - Measures height of a binary tree for a bal tree
+ * @tree: tree to go through
+ * Return: the height
+ */
+
 size_t heightagain(const binary_tree_t *tree)
 {
-	size_t left, right;
+	size_t l = 0;
+	size_t r = 0;
 
 	if (tree == NULL)
 	{
 		return (0);
 	}
-	else if (tree->left == NULL && tree->right == NULL)
-	{
-		return (0);
-	}
 	else
 	{
-		left = heightagain(tree->left);
-		right = heightagain(tree->right);
-		return ((left >= right) ? left + 1 : right + 1);
+		if (tree)
+		{
+			l = tree->left ? 1 + heightagain(tree->left) : 1;
+			r = tree->right ? 1 + heightagain(tree->right) : 1;
+		}
+		return ((l > r) ? l : r);
 	}
 }
+
 /**
- * binary_tree_balance - culculate the BF
- * @tree: the root
- * Return: the result
-*/
+ * binary_tree_balance - Measures balance factor of a binary tree
+ * @tree: tree to go through
+ * Return: balanced factor
+ */
+
 int binary_tree_balance(const binary_tree_t *tree)
 {
-	int right = 0, left = 0, result = 0;
+	int right = 0, left = 0, total = 0;
 
 	if (tree)
 	{
-		right = (int)heightagain(tree->right);
-		left = (int)heightagain(tree->left);
+		left = ((int)heightagain(tree->left));
+		right = ((int)heightagain(tree->right));
+		total = left - right;
 	}
-	result = left - right;
-	return (result);
+	return (total);
 }
